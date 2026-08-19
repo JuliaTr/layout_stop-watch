@@ -10,10 +10,20 @@
 }
 
 .stopwatch {
+  box-sizing: border-box;
+
   width: 80vmin;
   height: 80vmin;
 
   border: 1vmin dotted #000;
+  border-radius: 50%;
+}
+
+.stopwatch__center {
+  width: 5vmin;
+  height: 5vmin;
+
+  background-color: #f6a603;
   border-radius: 50%;
 }
 
