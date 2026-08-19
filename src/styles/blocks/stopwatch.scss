@@ -1,3 +1,5 @@
+@use '../utils/animations';
+
 $center-size: 5vmin;
 $minutes-width: 3vmin;
 $seconds-width: 1.5vmin;
@@ -77,15 +79,5 @@ $seconds-width: 1.5vmin;
     .stopwatch__minutes {
       animation-duration: 600s;
     }
-  }
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
   }
 }
