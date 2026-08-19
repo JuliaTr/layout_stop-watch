@@ -1,3 +1,7 @@
+$center-size: 5vmin;
+$minutes-width: 3vmin;
+$seconds-width: 1.5vmin;
+
 .page {
   margin: 0;
 
@@ -10,8 +14,6 @@
 }
 
 .stopwatch {
-  box-sizing: border-box;
-
   width: 80vmin;
   height: 80vmin;
 
@@ -25,11 +27,13 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
 
-  width: 5vmin;
-  height: 5vmin;
+  width: $center-size;
+  height: $center-size;
   z-index: 1;
+
+  margin-left: calc(-#{$center-size} / 2);
+  margin-top: calc(-#{$center-size} / 2);
 
   background-color: #f6a603;
   border-radius: 50%;
@@ -39,10 +43,11 @@
   position: absolute;
   left: 50%;
   bottom: 50%;
-  transform: translate(-50%);
 
-  width: 3vmin;
+  width: $minutes-width;
   height: 20vmin;
+
+  margin-left: calc(-#{$minutes-width} / 2);
 
   background-color: #0700ff;
 }
@@ -51,13 +56,27 @@
   position: absolute;
   left: 50%;
   bottom: 50%;
-  transform: translate(-50%);
 
-  width: 1.5vmin;
+  width: $seconds-width;
   height: 38vmin;
 
+  margin-left: calc(-#{$seconds-width} / 2);
+
   background-color: #2c8000;
+
+  animation-name: rotate;
+  animation-duration: 60s;
 }
+
+// @keyframes rotate {
+//   0% {
+//     transform: rotate(0deg);
+//   }
+
+//   100% {
+//     transform: rotate(360deg);
+//   }
+// }
 
 .visually-hidden {
   position: absolute !important;
