@@ -1,27 +1,12 @@
+@use '../utils/variables';
 @use '../utils/animations';
 @use '../utils/functions';
 
-$stopwatch-size: 80vmin;
-$center-size: 5vmin;
-$minutes-width: 3vmin;
-$minutes-height: 20vmin;
-$seconds-width: 1.5vmin;
-$seconds-height: 38vmin;
-$border-width: 1vmin;
-$center-color: #f6a603;
-$minutes-color: #0700ff;
-$seconds-color: #2c8000;
-$seconds: 60s;
-$steps: 60;
-$minutes: $seconds * $steps;
-$speed-up-seconds: 10s;
-$speed-up-minutes: $speed-up-seconds * $steps;
-
 .stopwatch {
-  width: $stopwatch-size;
-  height: $stopwatch-size;
+  width: variables.$stopwatch-size;
+  height: variables.$stopwatch-size;
 
-  border: $border-width dotted #000;
+  border: variables.$border-width dotted #000;
   border-radius: 50%;
 
   position: relative;
@@ -31,14 +16,14 @@ $speed-up-minutes: $speed-up-seconds * $steps;
     top: 50%;
     left: 50%;
 
-    width: $center-size;
-    height: $center-size;
+    width: variables.$center-size;
+    height: variables.$center-size;
     z-index: 1;
 
-    margin-left: functions.shift($center-size);
-    margin-top: functions.shift($center-size);
+    margin-left: functions.shift(variables.$center-size);
+    margin-top: functions.shift(variables.$center-size);
 
-    background-color: $center-color;
+    background-color: variables.$center-color;
     border-radius: 50%;
   }
 
@@ -47,18 +32,18 @@ $speed-up-minutes: $speed-up-seconds * $steps;
     left: 50%;
     bottom: 50%;
 
-    width: $minutes-width;
-    height: $minutes-height;
+    width: variables.$minutes-width;
+    height: variables.$minutes-height;
 
-    margin-left: functions.shift($minutes-width);
+    margin-left: functions.shift(variables.$minutes-width);
 
-    background-color: $minutes-color;
+    background-color: variables.$minutes-color;
 
     transform-origin: bottom center;
     animation: {
       name: rotate;
-      duration: $minutes;
-      timing-function: steps($steps, end);
+      duration: variables.$minutes;
+      timing-function: steps(variables.$steps, end);
       iteration-count: infinite;
     }
   }
@@ -68,17 +53,17 @@ $speed-up-minutes: $speed-up-seconds * $steps;
     left: 50%;
     bottom: 50%;
 
-    width: $seconds-width;
-    height: $seconds-height;
+    width: variables.$seconds-width;
+    height: variables.$seconds-height;
 
-    margin-left: functions.shift($seconds-width);
+    margin-left: functions.shift(variables.$seconds-width);
 
-    background-color: $seconds-color;
+    background-color: variables.$seconds-color;
 
     transform-origin: bottom center;
     animation: {
       name: rotate;
-      duration: $seconds;
+      duration: variables.$seconds;
       timing-function: linear;
       iteration-count: infinite;
     }
@@ -86,11 +71,11 @@ $speed-up-minutes: $speed-up-seconds * $steps;
 
   &--speed-up {
     .stopwatch__seconds {
-      animation-duration: $speed-up-seconds;
+      animation-duration: variables.$speed-up-seconds;
     }
 
     .stopwatch__minutes {
-      animation-duration: $speed-up-minutes;
+      animation-duration: variables.$speed-up-minutes;
     }
   }
 }
