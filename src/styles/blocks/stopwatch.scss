@@ -1,15 +1,27 @@
 @use '../utils/animations';
 @use '../utils/functions';
 
+$stopwatch-size: 80vmin;
 $center-size: 5vmin;
 $minutes-width: 3vmin;
+$minutes-height: 20vmin;
 $seconds-width: 1.5vmin;
+$seconds-height: 38vmin;
+$border-width: 1vmin;
+$center-color: #f6a603;
+$minutes-color: #0700ff;
+$seconds-color: #2c8000;
+$seconds: 60s;
+$steps: 60;
+$minutes: $seconds * $steps;
+$speed-up-seconds: 10s;
+$speed-up-minutes: $speed-up-seconds * $steps;
 
 .stopwatch {
-  width: 80vmin;
-  height: 80vmin;
+  width: $stopwatch-size;
+  height: $stopwatch-size;
 
-  border: 1vmin dotted #000;
+  border: $border-width dotted #000;
   border-radius: 50%;
 
   position: relative;
@@ -26,7 +38,7 @@ $seconds-width: 1.5vmin;
     margin-left: functions.shift($center-size);
     margin-top: functions.shift($center-size);
 
-    background-color: #f6a603;
+    background-color: $center-color;
     border-radius: 50%;
   }
 
@@ -36,17 +48,17 @@ $seconds-width: 1.5vmin;
     bottom: 50%;
 
     width: $minutes-width;
-    height: 20vmin;
+    height: $minutes-height;
 
     margin-left: functions.shift($minutes-width);
 
-    background-color: #0700ff;
+    background-color: $minutes-color;
 
     transform-origin: bottom center;
     animation: {
       name: rotate;
-      duration: 3600s;
-      timing-function: steps(60, end);
+      duration: $minutes;
+      timing-function: steps($steps, end);
       iteration-count: infinite;
     }
   }
@@ -57,16 +69,16 @@ $seconds-width: 1.5vmin;
     bottom: 50%;
 
     width: $seconds-width;
-    height: 38vmin;
+    height: $seconds-height;
 
     margin-left: functions.shift($seconds-width);
 
-    background-color: #2c8000;
+    background-color: $seconds-color;
 
     transform-origin: bottom center;
     animation: {
       name: rotate;
-      duration: 60s;
+      duration: $seconds;
       timing-function: linear;
       iteration-count: infinite;
     }
@@ -74,11 +86,11 @@ $seconds-width: 1.5vmin;
 
   &--speed-up {
     .stopwatch__seconds {
-      animation-duration: 10s;
+      animation-duration: $speed-up-seconds;
     }
 
     .stopwatch__minutes {
-      animation-duration: 600s;
+      animation-duration: $speed-up-minutes;
     }
   }
 }
