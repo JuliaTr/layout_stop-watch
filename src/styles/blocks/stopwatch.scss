@@ -1,4 +1,5 @@
 @use '../utils/variables';
+@use '../utils/mixins';
 @use '../utils/animations';
 @use '../utils/functions';
 
@@ -28,18 +29,12 @@
   }
 
   &__minutes {
-    position: absolute;
-    left: 50%;
-    bottom: 50%;
+    @include mixins.hand(
+      variables.$minutes-width,
+      variables.$minutes-height,
+      variables.$minutes-color
+    );
 
-    width: variables.$minutes-width;
-    height: variables.$minutes-height;
-
-    margin-left: functions.shift(variables.$minutes-width);
-
-    background-color: variables.$minutes-color;
-
-    transform-origin: bottom center;
     animation: {
       name: rotate;
       duration: variables.$minutes;
@@ -49,18 +44,12 @@
   }
 
   &__seconds {
-    position: absolute;
-    left: 50%;
-    bottom: 50%;
+    @include mixins.hand(
+      variables.$seconds-width,
+      variables.$seconds-height,
+      variables.$seconds-color
+    );
 
-    width: variables.$seconds-width;
-    height: variables.$seconds-height;
-
-    margin-left: functions.shift(variables.$seconds-width);
-
-    background-color: variables.$seconds-color;
-
-    transform-origin: bottom center;
     animation: {
       name: rotate;
       duration: variables.$seconds;
